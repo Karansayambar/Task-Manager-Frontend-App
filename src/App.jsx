@@ -16,7 +16,7 @@ function App() {
     setSidebar(!sidebar);
   };
 
-  console.log("auth", isAuthenticated);
+
 
   return (
     <BrowserRouter>

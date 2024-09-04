@@ -6,7 +6,6 @@ import { logout } from "../redux/thunk/authThunkActions";
 const Navbar = ({ handleClick, setView, view }) => {
   const  theme  = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch()
-  console.log(theme)
   const handleChangeTheme = (e) => {
     e.preventDefault()
       if(theme === "Dark") {
@@ -26,7 +25,6 @@ const Navbar = ({ handleClick, setView, view }) => {
   const handleLogout = () => {
     dispatch(logout());
   }
-  console.log(theme)
 
   return (
 <div className={`flex container justify-between px-5 ${theme === "Light" ? "bg-[#FBFDFC] text-black" : "bg-[#2C2C2C] !text-white"} tab:px-12`}>

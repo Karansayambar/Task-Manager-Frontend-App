@@ -14,10 +14,10 @@ export const themeReducer = (state = initialState, action) => {
         case CHANGE_TO_DARK:
             return {
                 ...state,
-                theme: 'Dark' // Update theme
+                theme: 'Dark' 
             };
 
         default:
-            return state; // Return the current state if no action matches
+            return state; 
     }
 };

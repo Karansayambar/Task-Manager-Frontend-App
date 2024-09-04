@@ -26,7 +26,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`py-24  flex flex-col space-y-4 border w-[280px]  px-4 mt-24 bg-white`}>
+      <div className="py-24  flex flex-col space-y-4 border w-[280px]  px-4 mt-24 bg-white">
         <div className=" flex-col flex bg-white rounded-sm">
           <ul className="px-3 py-6 flex-col flex space-y-2 font-semibold text-black/70">
             <li

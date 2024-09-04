@@ -1,5 +1,6 @@
 // import { getCookie } from "../../../utils/cookieUtils";
 import { loginFailure, loginRequest, loginSuccess, LOGOUT, registerFailure, registerRequest, registerSuccess } from "../actions/authAction";
+const token = localStorage.getItem('tm-token');
 
 
 export const loginUser = (credentials) => async (dispatch) => {
@@ -7,19 +8,18 @@ export const loginUser = (credentials) => async (dispatch) => {
   try {
     const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/login",{
       method : "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
       body: JSON.stringify({
         email: credentials.email,
         password: credentials.password,
       }),
-
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      credentials: 'include',
     })
 
     const results = await response.json();
     if (response.status === 200) {
+      localStorage.setItem("tm-token", results.token)
       dispatch(loginSuccess(results));
     }
   } catch (error) {
@@ -32,20 +32,17 @@ export const registerUser = (credentials) => async (dispatch) => {
   try {
     const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/register",{
       method : "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
       body: JSON.stringify({
         username: credentials.username,
         email: credentials.email,
         password: credentials.password,
       }),
-
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      credentials: 'include',
     })
 
     const results = await response.json();
-    console.log(results)
     if (response.status === 200) {
       dispatch(registerSuccess(results));
     }
@@ -60,18 +57,34 @@ export const logout = () => async (dispatch) => {
   try {
     const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/logout", {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
-      },
-      credentials: "include",  // Include credentials to handle cookies
+        "Authorization": `Bearer ${token}`,
+      }
+      // Include credentials to handle cookies
     });
-
-    if (!response.ok) {
+    
+    const json = await response.json()
+    
+    
+    if (json.status) {
+      localStorage.clear('tm-token')
+    }
+    else {
+      
       throw new Error("Failed to log out");
     }
+    
+
+
   } catch (error) {
     console.error("Logout error:", error.message);
   }
 };
+
+
+
+
 
 
