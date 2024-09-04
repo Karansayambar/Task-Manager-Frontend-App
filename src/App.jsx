@@ -32,7 +32,7 @@ function App() {
         {isAuthenticated && (
           <>
             <Route
-              path="/*"
+              path="/"
               element={
                 <div className="mt-0">
                   <Navbar handleClick={handleClick} view={view} setView={setView} />
