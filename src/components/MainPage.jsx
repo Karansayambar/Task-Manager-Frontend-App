@@ -15,7 +15,7 @@ const MainPage = ({sidebar, viewTask,setViewTask, view}) => {
         {
          sidebar && 
          
-         <div className={`  relative  ${!sidebar && !viewTask ? 'col-span-0': !sidebar && viewTask ?'col-span-0': sidebar && viewTask ? 'col-span-2' : 'col-span-2 '}${theme === "Light" ? "bg-[#FBFDFC] text-black" : "bg-[#2C2C2C] !text-white"}`}>
+         <div className={`  relative  ${!sidebar && !viewTask ? 'col-span-0': !sidebar && viewTask ?'col-span-0': sidebar && viewTask ? 'col-span-2' : 'col-span-2 '}bg-white`}>
         {/* Todo Sidebar display */}
         <img className=" absolute flex left-20 top-8 rounded-full w-[118px] h-[118px] " src="./profile.jfif" alt="profileImg"/>
             <Sidebar/>

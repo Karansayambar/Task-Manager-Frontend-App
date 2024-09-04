@@ -103,7 +103,7 @@ const ListPage = ({ setCurrentSelected, setViewTask,viewTask, view, sidebar }) =
         </div>
         <div className="py-2">
           <form
-            className={`flex flex-col relative justify-between h-[178px]  ${theme === "Light" ? "bg-[#F0F8F2]"  : "bg-[#2F3630] text-white"}`}
+            className={`flex flex-col relative justify-between h-[178px]  bg-[#F0F8F2]`}
             onSubmit={handleSubmit}
           >
             <div className="flex justify-between font-semibold text-black/80 px-10 py-4">

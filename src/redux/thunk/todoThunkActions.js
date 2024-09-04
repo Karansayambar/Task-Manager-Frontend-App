@@ -16,7 +16,7 @@ import {
 export const fetchAllTasks = () => async (dispatch) => {
   dispatch({ type: FETCH_TASKS_REQUEST });
   try {
-    const response = await fetch("http://localhost:3000/todo/read-todo", {
+    const response = await fetch(`${"https://taskmanagerbackend-xrer.onrender.com"}/todo/read-todo`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const createTodo = (todoData) => {
   return async (dispatch) => {
     dispatch({ type: CREATE_TODO_REQUEST });
     try {
-      const response = await fetch("http://localhost:3000/todo/create-todo", {
+    const response = await fetch(`${"https://taskmanagerbackend-xrer.onrender.com"}/todo/create-todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export const changeStatusOfIsImportant =
         dispatch({ type: CHANGE_IS_IMPORTANT, payload: data });
       }
       const response = await fetch(
-        "http://localhost:3000/todo/changeImportanceStatus",
+        `${"https://taskmanagerbackend-xrer.onrender.com"}/todo/changeImportanceStatus`,
         {
           method: "POST",
           headers: {
@@ -131,7 +131,7 @@ export const changeStatusOfIsCompleted =
         //
       }
       const response = await fetch(
-        "http://localhost:3000/todo/changeCompletedStatus",
+        `${"https://taskmanagerbackend-xrer.onrender.com"}/todo/changeCompletedStatus`,
         {
           method: "POST",
           headers: {
@@ -172,7 +172,7 @@ export const updateTodo = (task, todoId, dueDate, tasks) => {
   return async (dispatch) => {
     dispatch({ type: EDIT_TASK, payload: filteredTask });
     try {
-      const response = await fetch("http://localhost:3000/todo/edit-todo", {
+      const response = await fetch(`${"https://taskmanagerbackend-xrer.onrender.com"}/todo/edit-todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -206,7 +206,7 @@ export const deleteTodo = (todoId, tasks) => {
     console.log(data);
     dispatch({ type: DELETE_TASK, payload: data });
     try {
-      const response = await fetch("http://localhost:3000/todo/delete-todo", {
+      const response = await fetch(`${"https://taskmanagerbackend-xrer.onrender.com"}/todo/delete-todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

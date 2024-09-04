@@ -1,10 +1,11 @@
-import { getCookie } from "../../../utils/cookieUtils";
+// import { getCookie } from "../../../utils/cookieUtils";
 import { loginFailure, loginRequest, loginSuccess, LOGOUT, registerFailure, registerRequest, registerSuccess } from "../actions/authAction";
+
 
 export const loginUser = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await fetch("http://localhost:3000/auth/login",{
+    const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/login",{
       method : "POST",
       body: JSON.stringify({
         email: credentials.email,
@@ -29,7 +30,7 @@ export const loginUser = (credentials) => async (dispatch) => {
 export const registerUser = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
-    const response = await fetch("http://localhost:3000/auth/register",{
+    const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/register",{
       method : "POST",
       body: JSON.stringify({
         username: credentials.username,
@@ -57,7 +58,7 @@ export const registerUser = (credentials) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT });
   try {
-    const response = await fetch("http://localhost:3000/auth/logout", {
+    const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
