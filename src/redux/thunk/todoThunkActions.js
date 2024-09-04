@@ -19,7 +19,7 @@ export const fetchAllTasks = () => async (dispatch) => {
     const response = await fetch(`${"https://taskmanagerbackend-xrer.onrender.com"}/todo/read-todo`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       },
       credentials: "include", // This tells the browser to include cookies in the request
     }); // Replace with your API endpoint
