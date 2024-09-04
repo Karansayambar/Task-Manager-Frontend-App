@@ -1,6 +1,5 @@
 // import { getCookie } from "../../../utils/cookieUtils";
 import { loginFailure, loginRequest, loginSuccess, LOGOUT, registerFailure, registerRequest, registerSuccess } from "../actions/authAction";
-const token = localStorage.getItem('tm-token');
 
 
 export const loginUser = (credentials) => async (dispatch) => {
@@ -55,6 +54,8 @@ export const registerUser = (credentials) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT });
   try {
+const token = localStorage.getItem('tm-token');
+
     const response = await fetch("https://taskmanagerbackend-xrer.onrender.com/auth/logout", {
       method: "POST",
 
@@ -68,10 +69,11 @@ export const logout = () => async (dispatch) => {
     const json = await response.json()
     
     
-    if (json.status) {
+   
       localStorage.clear('tm-token')
-    }
-    else {
+      localStorage.clear('isAuthenticated')
+  
+    if(!json.status) {
       
       throw new Error("Failed to log out");
     }
